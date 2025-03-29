@@ -85,10 +85,6 @@ pytest
 docker build -t vehicle_project .
 docker run -p 9999:9999 vehicle_project
 
-## CI/CD com GitHub Actions
-
-Pipeline configurado em .github/workflows/ci.yml
-
 ## Personalização e Configurações
 
 Arquivo .env (opcional):

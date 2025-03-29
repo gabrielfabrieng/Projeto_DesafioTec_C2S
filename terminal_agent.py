@@ -58,8 +58,16 @@ def display_vehicles(vehicles: Any) -> None:
     Displays the vehicle search results in a friendly format.
     
     Args:
-        vehicles: List of vehicle dictionaries.
+        vehicles: List of vehicle dictionaries or error message.
     """
+    if isinstance(vehicles, dict) and "error" in vehicles:
+        print("Erro recebido do servidor:", vehicles["error"])
+        return
+
+    if not isinstance(vehicles, list):
+        print("Resposta inesperada do servidor:", vehicles)
+        return
+
     if not vehicles:
         print("Nenhum veículo encontrado com os critérios informados.")
         return
@@ -68,6 +76,7 @@ def display_vehicles(vehicles: Any) -> None:
     for v in vehicles:
         print(f"- {v['brand']} {v['model']} ({v['year']}), "
               f"Cor: {v['color']}, Quilometragem: {v['mileage']} km, Preço: R$ {v['price']:.2f}")
+
 
 def main() -> None:
     """
